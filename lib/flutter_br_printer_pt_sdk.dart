@@ -12,10 +12,9 @@ export 'src/brp_touch_printer.dart';
 class FlutterBrPrinterPtSdk {
   static const MethodChannel _channel =
       const MethodChannel('FlutterBrPrinterPtSdkPlugin');
-  
-  /*
-  Common methods 
-  */
+
+  /// impotent: you need to delete ALL objects create with new_xxx after use
+  /// this will let the native platform to release the memory.
   static Future delete_Objects(List<BRPBasic> objects) async {
     final args = List<String>();
     for(var target in objects){
@@ -26,8 +25,9 @@ class FlutterBrPrinterPtSdk {
     return _channel.invokeMethod('delete_Objects', args);
   }
 
-  //dispose all objects currently we create, you can not use them after this call
-  //but you still can create new objects after this call.
+  /// dispose all objects currently we create, same as delete_Objects
+  /// objects can not use after this call
+  /// but you can create new objects after this call.
   static Future dispose_AllCurrentObjects() async {
     var objMap = _objectMap;
     _objectMap = {};
@@ -42,6 +42,8 @@ class FlutterBrPrinterPtSdk {
   /*
   BRPtouchNetworkManager methods
    */
+
+
   static Future<BRPtouchNetworkManager> new_BRPtouchNetworkManager() async {
     final String manager = await _channel.invokeMethod('new_BRPtouchNetworkManager');
     var object = BRPtouchNetworkManager(manager);
@@ -49,7 +51,6 @@ class FlutterBrPrinterPtSdk {
     return object;
   }
 
-  //request network permission before start search
   static Future<bool> c_BRPtouchNetworkManager_startSearch(BRPtouchNetworkManager target, int searchTimeInSec){
     return _channel.invokeMethod('c_BRPtouchNetworkManager_startSearch', [target.target, searchTimeInSec]).then((value){
       if(value == 0 || value == null)return false;
@@ -72,6 +73,7 @@ class FlutterBrPrinterPtSdk {
   /*
   BRPtouchPrinter methods
    */
+
   static Future<BRPtouchPrinter> new_BRPtouchPrinter(String ip) async{
     final String printer = await _channel.invokeMethod('new_BRPtouchPrinter', [ip]);
     if(printer == null || printer.length == 0){
@@ -100,6 +102,7 @@ class FlutterBrPrinterPtSdk {
   /*
   listeners
    */
+
   static bool _listenerReady = false;
   static Map<String, List<BRPBasic>> _listenerMap = {};
   static Map<String, BRPBasic> _objectMap = {};
