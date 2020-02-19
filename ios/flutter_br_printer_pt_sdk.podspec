@@ -7,7 +7,8 @@ Pod::Spec.new do |s|
   s.version          = '0.0.1'
   s.summary          = 'Flutter plugin support for Brother PT-P750w'
   s.description      = <<-DESC
-A new flutter plugin project.
+A flutter wrapper for brother label printer sdk.
+currently only tested on PT-P750w.
                        DESC
   s.homepage         = 'http://https://github.com/se0lus/flutter_br_printer_pt_sdk'
   s.license          = { :file => '../LICENSE' }
