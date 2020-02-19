@@ -10,8 +10,10 @@ Native SDK Documents can be found here:
 https://support.brother.com/g/s/es/htmldoc/mobilesdk/index.html
 
 # Usage
+```
   flutter_br_printer_pt_sdk:
     path: ../
+```
 
 Currently this plugin only support iOS platform.
 Only tested on PT-P750W printer with 24mm label.
