@@ -15,6 +15,10 @@ class BRPtouchNetworkManager extends BRPBasic{
   //future will return until search complete;
   Future<List<BRPtouchDeviceInfo>> startSearch({int searchTimeInSec = 5}) {
 
+    if(this.disposed){
+      return null;
+    }
+
     if(_searchComplete != null){
       return _searchComplete.future;
     }
@@ -35,6 +39,10 @@ class BRPtouchNetworkManager extends BRPBasic{
   }
 
   Future<List<BRPtouchDeviceInfo>> getPrinterNetInfo(){
+    if(this.disposed){
+      return null;
+    }
+
     return FlutterBrPrinterPtSdk.c_BRPtouchNetworkManager_getPrinterNetInfo(this);
   }
 

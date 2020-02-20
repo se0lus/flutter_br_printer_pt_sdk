@@ -35,6 +35,16 @@ class BRPtouchPrintInfo{
     this.bHalfCut = 0,
     this.nPrintQuality = printQuality_High});
 
+  factory BRPtouchPrintInfo.fromMap(Map map){
+    return BRPtouchPrintInfo(
+      strPaperName: map['strPaperName']??paperName_24mm,
+      nAutoCutFlag: map['nAutoCutFlag']??1,
+      bEndCut: map['bEndCut']??1,
+      bHalfCut: map['bHalfCut']??0,
+      nPrintQuality: map['nPrintQuality']??4,
+    );
+  }
+
   Map toMap(){
     return {
       "strPaperName":strPaperName,

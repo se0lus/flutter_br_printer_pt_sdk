@@ -14,6 +14,10 @@ class BRPtouchPrinter extends BRPBasic{
 
   Future<bool> doPrintPdfFiles(BRPtouchPrintInfo info, List<String> pdfList) async {
 
+    if(this.disposed){
+      return false;
+    }
+
     if(_printFinish != null){
       return false;
     }
@@ -32,7 +36,12 @@ class BRPtouchPrinter extends BRPBasic{
     });
   }
 
-  Future<bool> cancelPrinting(){
+  Future<bool> cancelPrinting() async {
+
+    if(this.disposed){
+      return false;
+    }
+
     return FlutterBrPrinterPtSdk.c_BRPtouchPrinter_cancelPrinting(this);
   }
 
