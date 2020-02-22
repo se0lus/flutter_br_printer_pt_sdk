@@ -24,14 +24,14 @@ class BRPtouchPrintInfo{
   //TODO:support more params
   final String strPaperName;
   final int nAutoCutFlag;
-  final int bEndCut;
+  final int bEndcut;
   final int bHalfCut;
   final int nPrintQuality;
 
   BRPtouchPrintInfo({
     this.strPaperName = paperName_24mm,
     this.nAutoCutFlag = 1,
-    this.bEndCut = 1,
+    this.bEndcut = 1,
     this.bHalfCut = 0,
     this.nPrintQuality = printQuality_High});
 
@@ -39,7 +39,7 @@ class BRPtouchPrintInfo{
     return BRPtouchPrintInfo(
       strPaperName: map['strPaperName']??paperName_24mm,
       nAutoCutFlag: map['nAutoCutFlag']??1,
-      bEndCut: map['bEndCut']??1,
+      bEndcut: map['bEndcut']??1,
       bHalfCut: map['bHalfCut']??0,
       nPrintQuality: map['nPrintQuality']??4,
     );
@@ -49,9 +49,13 @@ class BRPtouchPrintInfo{
     return {
       "strPaperName":strPaperName,
       "nAutoCutFlag":nAutoCutFlag,
-      "bEndCut":bEndCut,
+      "bEndcut":bEndcut,
       "bHalfCut":bHalfCut,
       "nPrintQuality":nPrintQuality,
     };
+  }
+
+  String toString(){
+    return toMap().toString();
   }
 }

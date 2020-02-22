@@ -25,6 +25,7 @@ class BRPtouchPrinter extends BRPBasic{
     FlutterBrPrinterPtSdk.addListener(this, cb_didFinishPrint);
     _printFinish = Completer<bool>();
 
+    print("print with config:$info");
     return FlutterBrPrinterPtSdk.c_BRPtouchPrinter_doPrintPdfFiles(this, info, pdfList).then((bool result){
       if(result == false){
         print("start print failed");
